@@ -12,16 +12,15 @@ config({
 });
 
 // Using Middlewares
-app.use(express.json())
-app.use(cookieParser())
-
-// Using Routes
 app.use(cors({
     origin: [process.env.FRONTEND_URL],
     methods: ["GET","POST","PUT","DELETE"],
     credentials: true
 }))
+app.use(cookieParser())
+app.use(express.json())
 
+// Using Routes
 app.use("/api/v1/users",userRouter);
 app.use("/api/v1/tasks",taskRouter);
 
